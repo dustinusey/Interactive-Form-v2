@@ -1,0 +1,183 @@
+/* Base Styles */
+* {
+	outline: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	height: 100%;
+	font-family: 'Varela Round', sans-serif;
+	background: linear-gradient(rgba(65, 81, 119, 0.658), rgba(73, 66, 92, 0.89));
+	background-position: fixed;
+}
+header {
+	margin: 10px auto;
+	text-align: center;
+}
+svg {
+	display: none;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 60px;
+	color: white;
+}
+form {
+	padding: 10px;
+	margin-bottom: 100px;
+	max-width: 600px;
+}
+legend {
+	color: white;
+	padding: 5px 10px;
+	border-radius: 3px;
+	background: rgb(151, 170, 190);
+}
+fieldset {
+	margin: 20px auto;
+	border-radius: 5px;
+	border: none;
+	border-bottom: 3px solid transparent;
+	background: rgb(178, 185, 199);
+	padding: 15px;
+}
+input {
+	padding: 3px 10px;
+	border-radius: 5px;
+	color: rgb(187, 182, 182);
+	font-size: 1em;
+	border: none;
+	border-bottom: 3px solid transparent;
+	transition: .4s;
+}
+button {
+	padding: 15px;
+	border-radius: 3px;
+	border: 1px solid white;
+	font-size: .9em;
+	letter-spacing: 1px;
+	width: 35%;
+	background: rgb(123, 129, 179);
+	color: white;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .4s;
+}
+button:hover {
+	letter-spacing: 3px;
+	background: rgb(123, 132, 211);
+}
+
+
+
+
+
+
+
+
+.input-styles {
+	height: 35px;
+}
+input:focus {
+	color: black;
+	background: rgb(204, 212, 224);
+	border-color: rgb(118, 125, 223);
+}
+select {
+	height: 30px;
+}
+label {
+	margin: 5px 0;;
+}
+/* Spans */
+.active-price {
+	color: rgb(97, 233, 170);
+	text-shadow: 1px 1px 2px black;
+}
+.date {
+	color: rgb(82, 80, 80);
+}
+.payment-type {
+	color: rgb(105, 103, 219);
+}
+
+/* Classes for Styling */
+.hidden {
+	display: none;
+}
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 100%;
+	overflow: auto;
+}
+.col-group {
+	display: flex;
+	flex-direction: column;
+	margin: 10px auto;
+}
+.row-group {
+	display: flex;
+	justify-content: space-evenly;
+}
+.small-input {
+	width: 35%;
+}
+
+/* BASIC INFO */
+
+
+/* T-SHIRT INFO */
+
+.activities {
+	display: flex;
+}
+/* ACTIVITIES */
+.activities label {
+	margin: 0;
+	transition: .4s;
+	padding: 3px 5px;
+	border-radius: 3px;
+}
+.activities label:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	background: rgb(213, 220, 235);
+}
+
+/* PAYMENT INFO */
+.credit-card,
+.paypal,
+.bitcoin {
+	padding: 10px;
+	background: rgba(157, 168, 189, 0.562);
+	border-radius: 5px;
+}
+.credit-card input {
+	width: 95%;
+}
+.exp-date {
+	width: 60%;
+	padding-right: 50px;
+}
+.exp-year {
+	width: 30%;
+}
+.exp-date select,
+.exp-year select {
+	width: 100%;
+}
+
+
+
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+	svg {
+		display: initial;
+	}
+}
