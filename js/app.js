@@ -258,6 +258,7 @@ ccField.addEventListener('focus', () => {
 	}
 });
 ccField.addEventListener('keyup', () => {
+	$('.ccError').slideDown();
 	if (ccField.value.length == 8 ) {
 		$('.ccError').text('Almost there!')
 	} else 
@@ -378,6 +379,8 @@ appendMessage(nameField.parentNode, "Invalid Name", "nameError");
 appendMessage(mailField.parentNode, "Invalid Email", "mailError");
 appendMessage(other.parentNode, "If you have selected 'Other' please fill in your title.", "roleError");
 appendMessage(activityOptions.parentNode, "Please choose at least one activity.", "activityError");
+appendMessage(ccField.parentNode.parentNode.parentNode.parentNode, "Invalid CC Number", "ccError")
+
 appendPrice(activitiesSection, "Total price: $ " + price, "total-price")
 
 
@@ -402,7 +405,7 @@ function appendMessage(element, errorMessage, className) {
 
 
 // hide all error messages
-$([ $('.nameError'), $('.mailError'), $('.roleError'), $('.activityError') ]).each(function() {
+$([ $('.nameError'), $('.mailError'), $('.roleError'), $('.activityError'), $('.ccError') ]).each(function() {
 	$(this).hide();
 })
 
