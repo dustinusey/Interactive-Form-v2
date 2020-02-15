@@ -2,7 +2,7 @@
 const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 const nameField = document.getElementById('name');
 // EMAIL ADDRESS
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const emailRegex = /^\w+[.]?[@][A-Za-z]+[.][A-Za-z]{3}$/;
 const mailField = document.getElementById('mail');
 // CREDIT CARD NUMBER
 const ccNumRegex = /^(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{1,4})$/;
