@@ -384,10 +384,15 @@ submit.addEventListener('click', function(e) {
 	}
 	/* -------------------------------------- */
 	// If name value doesn't match name regex
+	if (mailField.value === '') {
+		$('.mailError').slideDown();
+		$('.mailError').text('Email field is empty.')
+	} else
 	if (!mailField.value.match(emailRegex)) {
 		e.preventDefault();
 		errorFormatting(mailField);
 		$('.mailError').slideDown();
+		$('.mailError').text('Invalid Email')
 	} else {
 		successFormatting(mailField);
 		$('.mailError').slideUp();
