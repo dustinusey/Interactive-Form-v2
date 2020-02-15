@@ -2,7 +2,7 @@
 const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 const nameField = document.getElementById('name');
 // EMAIL ADDRESS
-const emailRegex = /^\w+[.]?[@][A-Za-z]+[.][A-Za-z]{3}$/;
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const mailField = document.getElementById('mail');
 // CREDIT CARD NUMBER
 const ccNumRegex = /^(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{1,4})$/;
@@ -122,99 +122,58 @@ const activityInputs = document.querySelectorAll('.activities input');
 const activityLabels = document.querySelectorAll('.activities label');
 const priceClass = document.querySelectorAll('.price');
 let price = 0;
-activitiesSection.addEventListener("click", (e) => {
-	//option 1
-		if (e.target == activityLabels[0] && activityInputs[0].checked == false) {
-			priceClass[0].classList.add('active-price');
-			addPrice(200);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[0] && activityInputs[0].checked == true) {
-			priceClass[0].classList.remove('active-price');
-			subtractPrice(200);
-			priceCheck();
-		}
 
-	//option 2
-		if (e.target == activityLabels[1] && activityInputs[1].checked == false) {
-			priceClass[1].classList.add('active-price');
-			activityLabels[3].classList.add('no-option');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[1] && activityInputs[1].checked == true) {
-			priceClass[1].classList.remove('active-price');
-			activityLabels[3].classList.remove('no-option');
-			subtractPrice(100);
-			priceCheck();
-		}
 
-	// option 3
-		if (e.target == activityLabels[2] && activityInputs[2].checked == false) {
-			priceClass[2].classList.add('active-price');
-			activityLabels[4].classList.add('no-option');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[2] && activityInputs[2].checked == true) {
-			priceClass[2].classList.remove('active-price');
-			activityLabels[4].classList.remove('no-option');
-			subtractPrice(100);
-			priceCheck();
-		}
-
-	// option 4
-		if (e.target == activityLabels[3] && activityInputs[3].checked == false) {
-			priceClass[3].classList.add('active-price');
-			activityLabels[1].classList.add('no-option');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[3] && activityInputs[3].checked == true) {
-			priceClass[3].classList.remove('active-price');
-			activityLabels[1].classList.remove('no-option');
-			subtractPrice(100);
-			priceCheck();
-		}
-
-	// option 5
-		if (e.target == activityLabels[4] && activityInputs[4].checked == false) {
-			priceClass[4].classList.add('active-price');
-			activityLabels[2].classList.add('no-option');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[4] && activityInputs[4].checked == true) {
-			priceClass[4].classList.remove('active-price');
-			activityLabels[2].classList.remove('no-option');
-			subtractPrice(100);
-			priceCheck();
-		}
-
-	// option 6
-		if (e.target == activityLabels[5] && activityInputs[5].checked == false) {
-			priceClass[5].classList.add('active-price');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[5] && activityInputs[5].checked == true) {
-			priceClass[5].classList.remove('active-price');
-			subtractPrice(100);
-			priceCheck();
-		}
-
-	// option 7
-		if (e.target == activityLabels[6] && activityInputs[6].checked == false) {
-			priceClass[6].classList.add('active-price');
-			addPrice(100);
-			priceCheck();
-		} else
-		if (e.target == activityLabels[6] && activityInputs[6].checked == true) {
-			priceClass[6].classList.remove('active-price');
-			subtractPrice(100);
-			priceCheck();
-		}
+activityInputs.forEach((input, index) => {
+	input.addEventListener('click', (e) => {
+		activityCross();
+		activityCheck(e, index, priceClass[index].textContent);
+		priceClass.forEach(price => {
+		});
+	});
 });
+function activityCheck(e, p, cost) {
+	if (e.target.checked == true ) {
+		priceClass[p].classList.add('active-price');
+		addPrice(cost);
+		priceCheck();
+	} else
+	if (e.target.checked == false ) {
+		priceClass[p].classList.remove('active-price');
+		subtractPrice(cost);
+		priceCheck();
+	}
+}
+function activityCross() {
+	if ( activityInputs[1].checked == true) {
+		activityLabels[3].classList.add('no-option');
+	} else 
+	if ( activityInputs[1].checked == false) {
+		activityLabels[3].classList.remove('no-option');
+	}
+	if ( activityInputs[3].checked == true) {
+		activityLabels[1].classList.add('no-option');
+	} else
+	if ( activityInputs[3].checked == false) {
+		activityLabels[1].classList.remove('no-option');
+	}
+
+	if ( activityInputs[2].checked == true) {
+		activityLabels[4].classList.add('no-option');
+	} else
+	if ( activityInputs[2].checked == false) {
+		activityLabels[4].classList.remove('no-option');
+	}
+	if ( activityInputs[4].checked == true) {
+		activityLabels[2].classList.add('no-option');
+	} else
+	if ( activityInputs[4].checked == false) {
+		activityLabels[2].classList.remove('no-option');
+	}
+
+}
+
+
 
 function priceCheck() {
 	if (price <= 0) {
@@ -226,12 +185,14 @@ function priceCheck() {
 }
 
 function addPrice(amount) {
-	price += amount;
+	let parse = parseInt(amount)
+	price += parse;
 	$('.total-price').text("Total price: $ " + price);
 	$('.total-price').addClass('total-price-active');
 }
 function subtractPrice(amount) {
-	price -= amount;
+	let parse = parseInt(amount)
+	price -= parse;
 	$('.total-price').text("Total price: $ " + price);
 	$('.total-price').addClass('total-price-active');
 }
@@ -252,14 +213,15 @@ function subtractPrice(amount) {
 // CC functionality
 ccField.addEventListener('focus', () => {
 	if ( !ccField.value.match(ccNumRegex)) {
-	// appendMessage(ccField.parentNode.parentNode.parentNode.parentNode, "Please enter a 13-15 digit card number.", "ccError")
+	$('.ccError').slideDown();
 	} else {
 		$('.ccError').slideUp();
 	}
 });
 ccField.addEventListener('keyup', () => {
-	$('.ccError').slideDown();
+	
 	if (ccField.value.length == 8 ) {
+		$(".ccError").slideDown();
 		$('.ccError').text('Almost there!')
 	} else 
 	if (ccField.value.length == 13 ) {
@@ -272,9 +234,6 @@ ccField.addEventListener('keyup', () => {
 		successFormatting(ccField);
 	} 
 });
-ccField.addEventListener('focusout', () => {
-	$('.ccError').slideUp();
-});
 
 // ZIP functionality
 zipField.addEventListener('focus', () => {
@@ -283,7 +242,6 @@ zipField.addEventListener('focus', () => {
 });
 zipField.addEventListener('keyup', () => {
 	if ( zipField.value.match(ccZipRegex)) {
-		$('.ccError').slideUp();
 		successFormatting(zipField);
 		cvvField.focus();
 	} else {
